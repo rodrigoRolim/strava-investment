@@ -34,3 +34,29 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## mock to test GPS on console
+```js
+let lat = -23.55052
+let lon = -46.63330
+
+navigator.geolocation.watchPosition = (success) => {
+  setInterval(() => {
+    lat += 0.00001
+    lon += 0.00001
+
+    success({
+      coords: {
+        latitude: lat,
+        longitude: lon,
+        accuracy: 5,
+        altitude: 0,
+        speed: 1.2
+      },
+      timestamp: Date.now()
+    })
+  }, 1000)
+
+  return 1
+}
+```

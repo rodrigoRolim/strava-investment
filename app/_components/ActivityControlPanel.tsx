@@ -1,0 +1,96 @@
+'use client';
+
+import { QrCode, Send, } from "lucide-react";
+import { useState } from "react";
+import MoveControls from "./MoveControls";
+import { useInvestmentStore } from "../_store/investment.store";
+import { useShallow } from 'zustand/react/shallow'
+
+export default function ActivityControlPanel() {
+  const [isConnected, setIsConnected] = useState(true);
+  const {
+    pixAmount,
+    totalInvested,
+    setPixAmount,
+    setTotalInvested,
+  } = useInvestmentStore()
+  const handlePIXPayment = () => {
+    alert(`Pagamento PIX concluído com sucesso! Investido R$ ${pixAmount}`);
+    setTotalInvested(totalInvested + pixAmount);
+  };
+  const calculatePotentialEarnings = (amount: number) => {
+    // const plan = investmentPlans.find((p: any) => p.id === selectedPlan);
+    const baseRate = 0.02;
+    return (baseRate * (amount + totalInvested)).toFixed(2);
+  };
+  const handleEarningsUpdate = (earned: number) => {
+    console.log(`Ganhos atualizados: R$${earned}`);
+    // Aqui você pode atualizar um estado global ou fazer outras ações
+  };
+  return (
+    <div className="bg-white rounded-2xl shadow-lg p-6">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-bold text-gray-900">Ganhe dinheiro com exercícios</h2>
+        {/* <div className="flex items-center">
+          <Battery className="w-5 h-5 text-green-500 mr-1" />
+          <span className="text-sm">GPS Sinal forte</span>
+        </div> */}
+      </div>
+
+      <div className="grid grid-cols-1 gap-6">
+        {/* Valor do investimento选择 */}
+        <div className="space-y-4">
+          <h3 className="font-medium text-gray-700">Valor do investimento (PIX)</h3>
+          <div className="flex flex-wrap gap-2">
+            {[20, 50, 100, 200, 500, 1000].map(amount => (
+              <button
+                key={amount}
+                onClick={() => setPixAmount(amount)}
+                className={`w-full md:w-1/5 p-3 rounded-xl border-2 text-left ${pixAmount === amount ? 'border-orange-500 bg-orange-50' : 'border-gray-200 hover:border-orange-300'}`}
+              >
+                <div className="flex justify-between items-center">
+                  <div>
+                    <div className="text-black font-medium">R$ {amount}</div>
+                    <div className="text-sm text-gray-500">{`pix de R$${amount}`}</div>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+          <div className="relative">
+            <input
+              type="number"
+              value={pixAmount}
+              onChange={(e) => setPixAmount(Number(e.target.value))}
+              className="w-full p-3 border-2 border-gray-300 rounded-xl"
+              placeholder="自定义金额"
+              min="50"
+            />
+            <QrCode className="absolute right-3 top-3 w-5 h-5 text-gray-400" />
+          </div>
+          <div className="p-4 bg-blue-50 rounded-xl border border-blue-200">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-gray-700">Receita estimada por km</span>
+              <span className="text-lg font-bold text-green-600">
+                R$ {calculatePotentialEarnings(pixAmount)}
+              </span>
+            </div>
+            <div className="text-sm text-gray-500">
+             Com base no valor escolhido <span className="font-semibold">R$ {pixAmount}</span> e no seu ativo total <span className="font-semibold">R$ {totalInvested}</span>, você poderá ganhar <span className="font-semibold">R$ {calculatePotentialEarnings(pixAmount)}</span> por km percorrido.
+            </div>
+          </div>
+          <button
+            onClick={handlePIXPayment}
+            className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-lg transition-shadow flex items-center justify-center"
+          >
+            <Send className="w-5 h-5 mr-2" />
+            Gerar código de pagamento PIX
+          </button>
+        </div>
+      </div>
+
+      {/* 运动控制按钮 */}
+      <MoveControls />
+    </div>
+  )
+}
