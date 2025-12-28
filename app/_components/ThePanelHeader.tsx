@@ -9,7 +9,7 @@ export default function ThePanelHeader() {
           <p className="text-sm text-gray-600">Ganhe dinheiro com exercícios</p>
         </div>
         <div className="flex items-center space-x-4">
-          <div className="flex w-fit items-center px-3 py-2 bg-white rounded-lg shadow-sm">
+          <div className="flex w-fit items-center px-2 py-2 bg-white rounded-lg shadow-sm">
             <MapPin className="w-4 h-4 text-green-500 mr-2" />
             <span className="text-black text-xs md:text-sm w-full">GPS Conectado</span>
           </div>

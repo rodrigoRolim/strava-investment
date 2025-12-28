@@ -311,7 +311,7 @@ const InvestmentCheckout = () => {
                 <div className="space-y-3">
                   <div className="flex justify-between items-center">
                     <div className="text-sm">
-                      <span className="font-medium">Se você correr 5KM hoje:</span>
+                      <span className="font-medium">Se você correr 5KM:</span>
                       <div className="text-xs text-gray-500">(corrida: 1.5% por KM)</div>
                     </div>
                     <div className="font-bold text-green-600">
