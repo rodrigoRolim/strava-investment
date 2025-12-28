@@ -118,7 +118,7 @@ export default function Stepper() {
   ];
 
   // 处理输入变化
-  const handleInputChange = (section: string, field: string, value: number) => {
+  const handleInputChange = (section: keyof typeof formData, field: string, value: string | number) => {
     setFormData({
       ...formData,
       [section]: { ...formData[section], [field]: value }

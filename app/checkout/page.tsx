@@ -48,7 +48,7 @@ const InvestmentCheckout = () => {
   // Calcular rendimento estimado
   const calculateEarnings = () => {
     const monthlyEarnings = (investmentAmount * activityRates.running * estimatedKm).toFixed(2);
-    const roi = ((monthlyEarnings / investmentAmount) * 100).toFixed(1);
+    const roi = ((Number(monthlyEarnings) / investmentAmount) * 100).toFixed(1);
     return {
       monthly: parseFloat(monthlyEarnings),
       roi: parseFloat(roi),
@@ -92,7 +92,7 @@ const InvestmentCheckout = () => {
     }
   }, [timeLeft]);
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -204,7 +204,7 @@ const InvestmentCheckout = () => {
                         <div className="text-sm text-gray-600">retorno mensal</div>
                       </div>
                       <div className="text-center p-4 bg-white rounded-lg border">
-                        <div className="text-2xl font-bold text-green-600">{formatCurrency(earnings.perKm)}</div>
+                        <div className="text-2xl font-bold text-green-600">{formatCurrency(Number(earnings.perKm))}</div>
                         <div className="text-sm text-gray-600">por KM</div>
                       </div>
                     </div>
@@ -315,7 +315,7 @@ const InvestmentCheckout = () => {
                       <div className="text-xs text-gray-500">(corrida: 1.5% por KM)</div>
                     </div>
                     <div className="font-bold text-green-600">
-                      +{formatCurrency(5 * earnings.perKm)}
+                      +{formatCurrency(5 * Number(earnings.perKm))}
                     </div>
                   </div>
                   
