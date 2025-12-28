@@ -15,6 +15,7 @@ type InvestmentState = {
   activeSession: boolean
   isConnected: boolean
   sessionStats: Stats
+  pixAmountSelected: number
 }
 
 type InvestmentAction = {
@@ -23,10 +24,11 @@ type InvestmentAction = {
   setActiveSession: (sessionActive: boolean) => void
   setSessionStats: (stats: Stats) => void
   setPixAmount: (amount: number) => void
+  setPixAmountSelected: (amount: number) => void
 }
 
 export const useInvestmentStore = create<InvestmentState & InvestmentAction>((set) => ({
-  pixAmount: 0,
+  pixAmount: 20,
   investmentPlans: [],
   selectedPlan: 'basic',
   isConnected: false,
@@ -39,7 +41,9 @@ export const useInvestmentStore = create<InvestmentState & InvestmentAction>((se
     calories: 0,
     earned: 0,
   },
+  pixAmountSelected: 0,
 
+  setPixAmountSelected: (amount) => set({ pixAmountSelected: amount }),
   setPixAmount: (amount) => set({ pixAmount: amount }),
   setTotalInvested: (amount) => set({ totalInvested: amount }),
   setTotalEarned: (amount) => set({ totalEarned: amount }),

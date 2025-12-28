@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, Trophy, } from 'lucide-react';
+import { Zap, Trophy, Play, } from 'lucide-react';
 import { Running } from '../_components/icons';
 import ThePanelHeader from '../_components/ThePanelHeader';
 import AssetOverviewCard from '../_components/AssetOverviewCard';
@@ -14,18 +14,8 @@ const FitnessInvestmentPlatform = () => {
   const [showBalance, setShowBalance] = useState(true);
   const [sessionType, setSessionType] = useState('running');
   const { 
-    selectedPlan, 
-    activeSession, 
-    sessionStats, 
-    pixAmount, 
     totalInvested, 
     totalEarned, 
-    isConnected, 
-    setActiveSession,
-    setSessionStats,
-    setPixAmount,
-    setTotalInvested,
-    setTotalEarned
   } = useInvestmentStore()
   // 模拟投资数据
   const investmentPlans = [
@@ -94,29 +84,15 @@ const FitnessInvestmentPlatform = () => {
           
           {/* 左侧主要面板 */}
           <div className="lg:col-span-2 space-y-6">
-            
-            {/* 资产概览卡片 */}
            
             <AssetOverviewCard 
               totalInvested={totalInvested} 
               totalEarned={totalEarned}
             />
             {/* Painel de Controle Esportivo */}
-            <ActivityControlPanel 
-              pixAmount={pixAmount}
-              totalInvested={totalInvested}
-              sessionType={sessionType}
-              investmentPlans={investmentPlans}
-              selectedPlan={selectedPlan}
-              activeSession={activeSession}
-              sessionStats={sessionStats}
-              setPixAmount={setPixAmount}
-              setTotalInvested={setTotalInvested}
-              setSessionType={setSessionType}
-              setActiveSession={setActiveSession}
-              setSessionStats={setSessionStats}
-              setTotalEarned={setTotalEarned}
-            />
+            <ActivityControlPanel />
+            
+            {/* 资产概览卡片 */}
           </div>
 
           {/* 右侧侧边栏 */}

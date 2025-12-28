@@ -32,8 +32,6 @@ const InvestmentCheckout = () => {
       features: [
         'Rendimento por quilômetro percorrido',
         'GPS tracking em tempo real',
-        'Histórico completo de atividades',
-        'Meta personalizada de KM'
       ]
     },
     amount: investmentAmount,
@@ -112,13 +110,13 @@ const InvestmentCheckout = () => {
           </button>
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Investir & Correr</h1>
-              <p className="text-gray-600 mt-2">Invista agora e ganhe por cada quilômetro percorrido</p>
+              <h1 className="text-xl font-bold text-gray-900">Investir</h1>
+              <p className="text-sm text-gray-600 mt-2">Invista e ganhe por cada quilômetro percorrido</p>
             </div>
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <ShieldIcon className="w-6 h-6 text-green-500 mr-2" />
               <span className="text-sm font-medium text-gray-700">GPS ativo</span>
-            </div>
+            </div> */}
           </div>
         </header>
 
@@ -129,9 +127,9 @@ const InvestmentCheckout = () => {
             
             {/* Resumo do investimento por KM */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-gray-900">Seu Investimento Ativo</h2>
-                <div className="flex items-center px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full text-sm">
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-baseline gap-2 mb-6">
+                <h2 className="text-lg font-bold text-gray-900">Seu Investimento Ativo</h2>
+                <div className="flex items-center px-3 py-1 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full text-xs">
                   <RunningIcon className="w-4 h-4 mr-1" />
                   Rendimento por KM
                 </div>
@@ -140,27 +138,30 @@ const InvestmentCheckout = () => {
               <div className="space-y-6">
                 {/* Card principal */}
                 <div className="p-6 bg-gradient-to-r from-orange-50 to-red-50 rounded-xl border border-orange-200">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="font-bold text-gray-900 text-2xl mb-2">{investmentData.plan.name}</div>
-                      <div className="text-gray-600 mb-4">{investmentData.plan.description}</div>
-                      
-                      <div className="flex items-center space-x-6">
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-orange-600">{activityRates.running * 100}%</div>
-                          <div className="text-sm text-gray-600">por KM (corrida)</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-blue-600">R${earnings.perKm}</div>
-                          <div className="text-sm text-gray-600">rendimento/KM</div>
+                  <div className="flex flex-col justify-between items-start">
+                    <div className="flex flex-col gap-4">
+                      <div className="text-left">
+                        <div className="text-sm text-gray-600">investimento inicial</div>
+                        <div className="text-3xl font-bold text-gray-900">{formatCurrency(investmentData.amount)}</div>
+                      </div>
+                      {/* <div className="font-bold text-gray-900 text-2xl mb-2">{investmentData.plan.name}</div> */}
+                      <div className="flex flex-col gap-2">
+                        <p className="text-sm text-gray-600">{investmentData.plan.description}</p>
+                        
+                        <div className="flex items-center space-x-6">
+                          <div className="text-center">
+                            <div className="text-2xl font-bold text-orange-600">{activityRates.running * 100}%</div>
+                            <div className="text-sm text-gray-600">por KM (corrida)</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-2xl font-bold text-blue-600">R${earnings.perKm}</div>
+                            <div className="text-sm text-gray-600">rendimento/KM</div>
+                          </div>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="text-right">
-                      <div className="text-3xl font-bold text-gray-900">{formatCurrency(investmentData.amount)}</div>
-                      <div className="text-sm text-gray-600">investimento inicial</div>
-                    </div>
+                   
                   </div>
                 </div>
 
@@ -193,7 +194,7 @@ const InvestmentCheckout = () => {
                       </div>
                     </div>
                     
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="text-center p-4 bg-white rounded-lg border">
                         <div className="text-2xl font-bold text-green-600">+{formatCurrency(earnings.monthly)}</div>
                         <div className="text-sm text-gray-600">por mês</div>
@@ -211,169 +212,16 @@ const InvestmentCheckout = () => {
                 </div>
 
                 {/* Features */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {investmentData.plan.features.map((feature, index) => (
                     <div key={index} className="flex items-center p-3 bg-white border border-gray-200 rounded-lg">
-                      <CheckCircleIcon className="w-4 h-4 text-green-500 mr-2" />
-                      <span className="text-sm">{feature}</span>
+                      <CheckCircleIcon className="w-4 h-4 size-4 text-green-500 mr-2" />
+                      <span className="text-xs">{feature}</span>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
-            
-            {/* Termos e botão */}
-            { !isInvestmentAgreeded && <div className="space-y-6">
-              <div className="bg-white rounded-2xl shadow-lg p-6">
-                <div className="flex items-start">
-                  <input
-                    type="checkbox"
-                    id="terms"
-                    checked={agreedToTerms}
-                    onChange={(e) => setAgreedToTerms(e.target.checked)}
-                    className="mt-1 mr-3"
-                  />
-                  <label htmlFor="terms" className="text-sm text-gray-700">
-                    Concordo que os rendimentos serão calculados com base nos quilômetros registrados via GPS. 
-                    Confirmo que entendi o funcionamento do sistema de rendimento por atividade física e aceito os{' '}
-                    <a href="#" className="text-orange-600 hover:underline">Termos de Uso</a>.
-                  </label>
-                </div>
-              </div>
-
-              <button
-                onClick={handlePayment}
-                disabled={!agreedToTerms}
-                className={`w-full py-4 rounded-xl font-bold text-lg transition-all flex items-center justify-center ${
-                  agreedToTerms
-                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-lg hover:scale-[1.02]'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                }`}
-              >
-                <ZapIcon className="w-6 h-6 mr-2" />
-                {`Investir ${formatCurrency(investmentData.total)} e Começar a Ganhar`}
-              </button>
-            </div> }
-
-            {/* Método de pagamento - PIX (focado) */}
-            { isInvestmentAgreeded && <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Pagamento Rápido com PIX</h2>
-              
-              <div className="space-y-6">
-                <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
-                  <div className="text-center mb-6">
-                    <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
-                      <img src="/pix.png" height={40} width={40}/>
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">Pague com PIX e comece agora!</h3>
-                    <p className="text-gray-600">Pagamento instantâneo - Ative seu investimento em segundos</p>
-                  </div>
-
-                  {/* QR Code */}
-                  <div className="mb-6">
-                    <div className="bg-white p-8 rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center">
-                      <div className="grid grid-cols-9 gap-1 w-72 h-72 mb-6">
-                        {/* QR Code visual */}
-                        {Array.from({ length: 81 }).map((_, i) => (
-                          <div 
-                            key={i}
-                            className={`bg-gray-900 rounded-sm ${Math.random() > 0.5 ? 'opacity-100' : 'opacity-0'}`}
-                          />
-                        ))}
-                      </div>
-                      <div className="text-center">
-                        <div className="font-medium text-gray-900 mb-1">Escaneie com seu banco</div>
-                        <div className="text-sm text-gray-500">Abra o app do seu banco e escaneie o código</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Código PIX */}
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <label className="text-sm font-medium text-gray-700">
-                        Código PIX (copie e cole)
-                      </label>
-                      <div className="flex items-center text-sm text-gray-500">
-                        <ClockIcon className="w-4 h-4 mr-1" />
-                        Expira em: {formatTime(timeLeft)}
-                      </div>
-                    </div>
-                    <div className="flex">
-                      <div className="flex-1 p-4 bg-gray-50 rounded-l-lg border border-gray-300 font-mono text-sm overflow-x-auto">
-                        {investmentData.pixCode}
-                      </div>
-                      <button
-                        onClick={handleCopyPixCode}
-                        className="px-6 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-r-lg hover:opacity-90 transition-opacity flex items-center"
-                      >
-                        <CopyIcon className="w-4 h-4 mr-2" />
-                        {copied ? 'Copiado!' : 'Copiar'}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> }
-
-          </div>
-
-          {/* Coluna lateral */}
-          <div className="space-y-8">
-            
-            {/* Resumo financeiro */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-6">Resumo do Pagamento</h2>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between py-3 border-b border-gray-200">
-                  <span className="text-gray-600">Valor do investimento</span>
-                  <span className="font-medium">{formatCurrency(investmentData.amount)}</span>
-                </div>
-                
-                <div className="flex justify-between py-3 border-b border-gray-200">
-                  <span className="text-gray-600">Taxa de ativação</span>
-                  <span className="font-medium">{formatCurrency(investmentData.tax)}</span>
-                </div>
-                
-                <div className="flex justify-between py-3">
-                  <span className="text-lg font-bold text-gray-900">Total a pagar</span>
-                  <span className="text-2xl font-bold text-orange-600">{formatCurrency(investmentData.total)}</span>
-                </div>
-              </div>
-
-              {/* Exemplo de ganhos */}
-              <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
-                <div className="flex items-center mb-3">
-                  <TargetIcon className="w-5 h-5 text-blue-600 mr-2" />
-                  <h3 className="font-bold text-gray-900">Exemplo prático</h3>
-                </div>
-                
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm">
-                      <span className="font-medium">Se você correr 5KM hoje:</span>
-                      <div className="text-xs text-gray-500">(corrida: 1.5% por KM)</div>
-                    </div>
-                    <div className="font-bold text-green-600">
-                      +{formatCurrency(5 * earnings.perKm)}
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm">
-                      <span className="font-medium">Meta mensal (100KM):</span>
-                      <div className="text-xs text-gray-500">misto de atividades</div>
-                    </div>
-                    <div className="font-bold text-green-600">
-                      +{formatCurrency(earnings.monthly)}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Como funciona */}
             <div className="bg-gradient-to-r from-gray-900 to-black rounded-2xl p-6 text-white">
               <div className="flex items-center mb-6">
                 <MapIcon className="w-6 h-6 mr-3" />
@@ -429,6 +277,161 @@ const InvestmentCheckout = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="space-y-8">
+          
+            {/* Resumo financeiro */}
+            <div className="bg-white rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Resumo do Pagamento</h2>
+              
+              <div className="space-y-4">
+                <div className="flex justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-600">Valor do investimento</span>
+                  <span className="font-medium">{formatCurrency(investmentData.amount)}</span>
+                </div>
+                
+                <div className="flex justify-between py-3 border-b border-gray-200">
+                  <span className="text-gray-600">Taxa de ativação</span>
+                  <span className="font-medium">{formatCurrency(investmentData.tax)}</span>
+                </div>
+                
+                <div className="flex justify-between py-3">
+                  <span className="text-lg font-bold text-gray-900">Total a pagar</span>
+                  <span className="text-2xl font-bold text-orange-600">{formatCurrency(investmentData.total)}</span>
+                </div>
+              </div>
+
+              {/* Exemplo de ganhos */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl">
+                <div className="flex items-center mb-3">
+                  <TargetIcon className="w-5 h-5 text-blue-600 mr-2" />
+                  <h3 className="font-bold text-gray-900">Exemplo prático</h3>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center">
+                    <div className="text-sm">
+                      <span className="font-medium">Se você correr 5KM hoje:</span>
+                      <div className="text-xs text-gray-500">(corrida: 1.5% por KM)</div>
+                    </div>
+                    <div className="font-bold text-green-600">
+                      +{formatCurrency(5 * earnings.perKm)}
+                    </div>
+                  </div>
+                  
+                  <div className="flex justify-between items-center">
+                    <div className="text-sm">
+                      <span className="font-medium">Meta mensal (100KM):</span>
+                      <div className="text-xs text-gray-500">misto de atividades</div>
+                    </div>
+                    <div className="font-bold text-green-600">
+                      +{formatCurrency(earnings.monthly)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           
+            {/* Como funciona */}
+          </div>
+              
+          {/* Coluna lateral */}
+         
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 mt-8">
+          <div className="col-span-2 w-full">
+            {/* Termos e botão */}
+            { !isInvestmentAgreeded && <div className="space-y-6">
+              <div className="bg-white rounded-2xl shadow-lg p-6">
+                <div className="flex items-start">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    checked={agreedToTerms}
+                    onChange={(e) => setAgreedToTerms(e.target.checked)}
+                    className="mt-1 mr-3"
+                  />
+                  <label htmlFor="terms" className="text-sm text-gray-700">
+                    Concordo que os rendimentos serão calculados com base nos quilômetros registrados via GPS. 
+                    Confirmo que entendi o funcionamento do sistema de rendimento por atividade física e aceito os{' '}
+                    <a href="#" className="text-orange-600 hover:underline">Termos de Uso</a>.
+                  </label>
+                </div>
+              </div>
+
+              <button
+                onClick={handlePayment}
+                disabled={!agreedToTerms}
+                className={`w-full py-4 rounded-xl font-bold text-base transition-all flex items-center justify-center ${
+                  agreedToTerms
+                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:shadow-lg hover:scale-[1.02]'
+                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                }`}
+              >
+                <ZapIcon className="w-6 h-6 mr-2" />
+                {`Investir ${formatCurrency(investmentData.total)}`}
+              </button>
+            </div> }
+
+            {/* Método de pagamento - PIX (focado) */}
+            { isInvestmentAgreeded && <div className="bg-white rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-gray-900 mb-6">Pagamento Rápido com PIX</h2>
+              
+              <div className="space-y-6">
+                <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200">
+                  <div className="text-center mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-4">
+                      <img src="/pix.png" height={40} width={40}/>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">Pague com PIX e comece agora!</h3>
+                    <p className="text-gray-600">Pagamento instantâneo - Ative seu investimento em segundos</p>
+                  </div>
+
+                  {/* QR Code */}
+                  <div className="mb-6">
+                    <div className="bg-white p-8 rounded-xl border-2 border-dashed border-gray-300 flex flex-col items-center justify-center">
+                      <div className="grid grid-cols-9 gap-1 w-72 h-72 mb-6">
+                        {/* QR Code visual */}
+                        {Array.from({ length: 81 }).map((_, i) => (
+                          <div 
+                            key={i}
+                            className={`bg-gray-900 rounded-sm ${Math.random() > 0.5 ? 'opacity-100' : 'opacity-0'}`}
+                          />
+                        ))}
+                      </div>
+                      <div className="text-center">
+                        <div className="font-medium text-gray-900 mb-1">Escaneie com seu banco</div>
+                        <div className="text-sm text-gray-500">Abra o app do seu banco e escaneie o código</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Código PIX */}
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <label className="text-sm font-medium text-gray-700">
+                        Código PIX (copie e cole)
+                      </label>
+                      <div className="flex items-center text-sm text-gray-500">
+                        <ClockIcon className="w-4 h-4 mr-1" />
+                        Expira em: {formatTime(timeLeft)}
+                      </div>
+                    </div>
+                    <div className="flex">
+                      <input defaultValue={investmentData.pixCode} className="flex-1 p-4 w-fit bg-gray-50 rounded-l-lg border border-gray-300 font-mono text-sm overflow-x-auto" />
+                      <button
+                        onClick={handleCopyPixCode}
+                        className="px-6 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-r-lg hover:opacity-90 transition-opacity flex items-center"
+                      >
+                        <CopyIcon className="w-4 h-4 mr-2" />
+                        {copied ? 'Copiado!' : 'Copiar'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> }
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ export default function AssetOverviewCard({ totalInvested, totalEarned }: Props)
             <div className="flex items-center">
               <DollarSign className="w-8 h-8 text-gray-400 mr-2" />
               <span className="text-2xl sm:text4xl font-bold text-gray-900">
-                {showBalance ? `R$${(totalInvested + totalEarned).toFixed(2)}` : '••••••••'}
+                {showBalance ? `R$${(totalInvested).toFixed(2)}` : '••••••••'}
               </span>
               <button 
                 onClick={toggleBalacenVisibility}
@@ -36,7 +36,7 @@ export default function AssetOverviewCard({ totalInvested, totalEarned }: Props)
               <TrendingUp className="w-5 h-5 mr-1" />
               <span className="text-xl font-bold">R${totalEarned.toFixed(2)}</span>
             </div>
-            <div className="text-green-600 font-medium">+{(totalEarned / totalInvested * 100).toFixed(1)}%</div>
+            <div className="text-green-600 font-medium">+{totalInvested > 0 ? (totalEarned / totalInvested * 100).toFixed(1) : 0}%</div>
             <div className="text-sm text-gray-500">Renda acumulada</div>
           </div>
         </div>

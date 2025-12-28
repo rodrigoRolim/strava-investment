@@ -1,10 +1,10 @@
 'use client';
 
-import { QrCode, Send, } from "lucide-react";
+import { QrCode, Send, Play } from "lucide-react";
 import { useState } from "react";
-import MoveControls from "./MoveControls";
+import Link from "next/link";
 import { useInvestmentStore } from "../_store/investment.store";
-import { useShallow } from 'zustand/react/shallow'
+
 
 export default function ActivityControlPanel() {
   const [isConnected, setIsConnected] = useState(true);
@@ -36,7 +36,6 @@ export default function ActivityControlPanel() {
           <span className="text-sm">GPS Sinal forte</span>
         </div> */}
       </div>
-
       <div className="grid grid-cols-1 gap-6">
         {/* Valor do investimento选择 */}
         <div className="space-y-4">
@@ -79,18 +78,27 @@ export default function ActivityControlPanel() {
              Com base no valor escolhido <span className="font-semibold">R$ {pixAmount}</span> e no seu ativo total <span className="font-semibold">R$ {totalInvested}</span>, você poderá ganhar <span className="font-semibold">R$ {calculatePotentialEarnings(pixAmount)}</span> por km percorrido.
             </div>
           </div>
-          <button
-            onClick={handlePIXPayment}
+          <Link
+            href="/checkout"
             className="w-full p-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold rounded-xl hover:shadow-lg transition-shadow flex items-center justify-center"
           >
             <Send className="w-5 h-5 mr-2" />
             Gerar código de pagamento PIX
-          </button>
+          </Link>
+          <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-gray-200">
+            <Link
+              href="/distance-tracker"
+              className="w-full p-4 bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold rounded-xl hover:shadow-lg transition-shadow flex items-center justify-center"
+            >
+            <Play className="w-6 h-6 mr-2" />
+              Comecar exercícios
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* 运动控制按钮 */}
-      <MoveControls />
+     
     </div>
   )
 }
