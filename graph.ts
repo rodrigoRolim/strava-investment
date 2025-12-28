@@ -25,7 +25,7 @@
 
 // const GET_USER = gql`
 //   query GetUser {
-//     user(id: ${1}) {
+//     user(id: 1) {
 //       id
 //       name
 //       email

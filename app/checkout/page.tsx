@@ -216,7 +216,7 @@ const InvestmentCheckout = () => {
                   {investmentData.plan.features.map((feature, index) => (
                     <div key={index} className="flex items-center p-3 bg-white border border-gray-200 rounded-lg">
                       <CheckCircleIcon className="w-4 h-4 size-4 text-green-500 mr-2" />
-                      <span className="text-xs">{feature}</span>
+                      <span className="text-black text-xs">{feature}</span>
                     </div>
                   ))}
                 </div>
