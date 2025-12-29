@@ -69,16 +69,16 @@ export default function DistanceTracker() {
       {error && (<p className="text-xs sm:textsm md:text-base text-red-800 border-l-4 border-l-red-600 px-4 py-2 bg-red-100">{error}</p>)}
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center mb-8">
-          <div className="rounded-lg bg-gray-50 py-4">
+          <div className="rounded-lg bg-white py-4">
             <div className="text-black text-2xl font-bold">{stats.distance.toFixed(2)}</div>
             <div className="text-sm text-gray-500">km</div>
           </div>
-          <div className="rounded-lg bg-gray-50 py-4">
+          <div className="rounded-lg bg-white py-4">
             <div className="text-black text-2xl font-bold">{stats.calories}</div>
             <div className="text-sm text-gray-500">calorias</div>
           </div>
-          <div className="rounded-lg bg-gray-50 py-4">
-            <div className="text-black text-2xl font-bold text-green-600">R${stats.earned.toFixed(2)}</div>
+          <div className="rounded-lg bg-white py-4">
+            <div className="text-2xl font-bold text-green-600">R${stats.earned.toFixed(2)}</div>
             <div className="text-sm text-gray-500">renda</div>
           </div>
         </div>
