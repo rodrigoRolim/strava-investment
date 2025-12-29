@@ -76,77 +76,26 @@ export const CheckCircleIcon = ({ className = "w-5 h-5" }) => (
   </svg>
 );
 
-export const PixIcon = ({ className = "w-6 h-6", color = "#32BCAD", size = 24 }) => {
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 48 48"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Círculo verde */}
-      <circle cx="24" cy="24" r="22" fill="#32BCAD" />
-      
-      {/* Letra "P" */}
-      <path
-        d="M18 16H22C24.2 16 26 17.8 26 20C26 22.2 24.2 24 22 24H20V32H18V16ZM20 22H22C22.6 22 23 21.6 23 21C23 20.4 22.6 20 22 20H20V22Z"
-        fill="white"
-      />
-      
-      {/* Letra "I" */}
-      <rect x="26" y="16" width="2" height="16" fill="white" />
-      
-      {/* Letra "X" */}
-      <path
-        d="M32 16H30L34 24L38 16H36L34 20L32 16Z"
-        fill="white"
-      />
-      <path
-        d="M32 32H30L34 24L38 32H36L34 28L32 32Z"
-        fill="white"
-      />
-    </svg>
-  );
-};
+export const WalletIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+  </svg>
+);
 
-// Versão alternativa mais estilizada
-export const PixIconFilled = ({ className = "w-6 h-6", color = "#32BCAD", size = 24 }) => {
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Fundo com gradiente (opcional) */}
-      <defs>
-        <linearGradient id="pixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#32BCAD" />
-          <stop offset="100%" stopColor="#0066B3" />
-        </linearGradient>
-      </defs>
-      
-      {/* Círculo de fundo */}
-      <circle cx="12" cy="12" r="10" fill="url(#pixGradient)" />
-      
-      {/* Símbolo PIX branco */}
-      <path
-        d="M16 8L8 16M8 8L16 16M12 6V18M18 12H6"
-        stroke="white"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      
-      {/* Pontos brancos */}
-      <circle cx="8" cy="8" r="1.2" fill="white" />
-      <circle cx="16" cy="8" r="1.2" fill="white" />
-      <circle cx="8" cy="16" r="1.2" fill="white" />
-      <circle cx="16" cy="16" r="1.2" fill="white" />
-    </svg>
-  );
-};
+export const BankIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+  </svg>
+);
+
+export const PixIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+  </svg>
+);
+
+export const AlertIcon = ({ className = "w-6 h-6" }) => (
+  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.998-.833-2.768 0L4.342 16.5c-.77.833.192 2.5 1.732 2.5z" />
+  </svg>
+);
