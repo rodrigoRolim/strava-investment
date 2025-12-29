@@ -192,7 +192,7 @@ const WithdrawalScreen = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-orange-50 md:p-8">
+    <div className="min-h-screen  md:p-8">
       <div className="max-w-6xl mx-auto">
         
         {/* Cabeçalho */}
