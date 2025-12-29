@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { PixIcon, RunningIcon } from '../_components/icons';
-import { ArrowLeftIcon, CalculatorIcon, CheckCircleIcon, ClockIcon, CopyIcon, CreditCardIcon, MapIcon, ShieldIcon, TargetIcon, ZapIcon } from 'lucide-react';
+import { ArrowLeftIcon, CalculatorIcon, CheckCircleIcon, ClockIcon, CopyIcon, CreditCardIcon, MapIcon, QrCode, ShieldIcon, TargetIcon, ZapIcon } from 'lucide-react';
 
 // Componentes de ícones SVG
 
@@ -38,11 +38,7 @@ const InvestmentCheckout = () => {
     tax: 2.5,
     total: investmentAmount + 2.5,
     pixCode: '00020126370014BR.GOV.BCB.PIX0114+5511999999999520400005303986540512.505802BR5925FITINVEST6009SAO PAULO62070503***6304E2A0',
-    expirationTime: '30:00',
-    paymentMethods: [
-      { id: 'pix', name: 'PIX', icon: <PixIcon />, description: 'Pagamento instantâneo' },
-      { id: 'credit', name: 'Cartão', icon: <CreditCardIcon />, description: 'Até 12x' }
-    ]
+    expirationTime: '30:00'
   };
 
   // Calcular rendimento estimado
