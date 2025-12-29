@@ -9,44 +9,30 @@ export default function HealthData() {
       </div>
       
       <div className="space-y-4">
-        <div>
-          <div className="flex justify-between mb-1">
-            <span>Distância percorrida neste mês</span>
-            <span>45.2/100 km</span>
-          </div>
-          <div className="h-2 bg-white bg-opacity-20 rounded-full">
-            <div className="h-full bg-white rounded-full w-[45.2%]"></div>
-          </div>
+        <div className="flex justify-between mb-1">
+          <span>Distância percorrida total</span>
+          <span>45.2 km</span>
+        </div>
+
+        <div className="flex justify-between mb-1">
+          <span>Calorias gasta total</span>
+          <span>2,450 cal</span>
         </div>
         
-        <div>
-          <div className="flex justify-between mb-1">
-            <span>Consumo de calorias</span>
-            <span>2,450/5,000 cal</span>
-          </div>
-          <div className="h-2 bg-white bg-opacity-20 rounded-full">
-            <div className="h-full bg-green-300 rounded-full w-[49%]"></div>
-          </div>
+        <div className="flex justify-between mb-1">
+          <span>dias de exercício contínuo</span>
+          <span className="flex items-center">
+            <Flame className="w-4 h-4 mr-1" />
+            7 Dias
+          </span>
         </div>
         
-        <div>
-          <div className="flex justify-between mb-1">
-            <span>dias de exercício contínuo</span>
-            <span className="flex items-center">
-              <Flame className="w-4 h-4 mr-1" />
-              7 Dias
-            </span>
-          </div>
-          <div className="h-2 bg-white bg-opacity-20 rounded-full">
-            <div className="h-full bg-orange-300 rounded-full w-[100%]"></div>
-          </div>
-        </div>
       </div>
       
       <div className="mt-6 p-3 bg-white text-gray-700 bg-opacity-0 rounded-lg">
         <div className="flex justify-between items-center">
           <div>
-            <div className="text-sm opacity-90">Estmativa renda mensal</div>
+            <div className="text-sm opacity-90">Renda total</div>
             <div className="text-2xl font-bold">R$ 125.80</div>
           </div>
           <Award className="w-8 h-8" />
