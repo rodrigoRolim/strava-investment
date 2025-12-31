@@ -29,11 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <div className="max-w-7xl mx-auto bg-linear-to-b from-gray-50 to-orange p-4 md:p-6 pb-26 min-h-dvh">
-            <ThePanelHeader />
-            {children}
-          </div>
-          <BottomNavigation />
+        {children}
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 import { Pause, Play } from "lucide-react";
-import { useGPS } from "../_utils/useGPS";
+import { useGPS } from "../_hooks/useGPS";
 import { useInvestmentStore } from "../_store/investment.store";
 
 

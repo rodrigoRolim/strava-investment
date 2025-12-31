@@ -1,29 +1,17 @@
 'use client';
 
 import { useState } from "react";
-// import 'web-components-lib/components/my-button'
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'my-button': {
-        text?: string;
-        color?: string;
-        children?: React.ReactNode;
-      };
-    }
-  }
-}
 
 export default function Stepper() {
-  const [currentStep, setCurrentStep] = useState(0); // 从0开始计数，方便数组索引
+  const [currentStep, setCurrentStep] = useState(0); 
   const [formData, setFormData] = useState({
     profile: { name: '', gender: '', birthday: '' },
-    sports: { primarySport: '', frequency: '' },
+    bodyStats: { height: '', weight: '' },
     goals: { goalType: '', weeklyTarget: '' }
   });
 
-  // 步骤配置：标题和内容组件
+
   const steps = [
     { 
       title: 'Crie o seu perfil', 
@@ -57,31 +45,24 @@ export default function Stepper() {
       )
     },
     { 
-      title: 'Escolha o seu esporte', 
+      title: 'Peso e altura', 
       component: (
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Principais esportes</label>
-            <select className="w-full p-2 border border-gray-300 rounded-md"
-                    value={formData.sports.primarySport}
-                    onChange={(e) => handleInputChange('sports', 'primarySport', Number(e.target.value))}>
-              <option value="">Selecione</option>
-              <option value="running">Corrida</option>
-              <option value="cycling">Ciclismo</option>
-              <option value="swimming">Natação</option>
-              <option value="hiking">Trilhas</option>
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="height">Altura</label>
+            <input id="height" className="w-full p-2 border border-gray-300 rounded-md"
+                    placeholder="1,65m"
+                    inputMode="numeric"
+                    value={formData.bodyStats.height}
+                    onChange={(e) => handleInputChange('bodyStats', 'height', Number(e.target.value))} />
+            
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Frequência semanal de exercícios</label>
-            <select className="w-full p-2 border border-gray-300 rounded-md"
-                    value={formData.sports.frequency}
-                    onChange={(e) => handleInputChange('sports', 'frequency', Number(Number(e.target.value)))}>
-              <option value="">Selecione</option>
-              <option value="1-2">1-2 vezes</option>
-              <option value="3-4">3-4 vezes</option>
-              <option value="5+">5 vezes ou mais</option>
-            </select>
+            <label className="block text-sm font-medium text-gray-700 mb-1" htmlFor="weight">Peso</label>
+            <input id="weight" className="w-full p-2 border border-gray-300 rounded-md"
+                    placeholder="60kg"
+                    value={formData.bodyStats.weight}
+                    onChange={(e) => handleInputChange('bodyStats', 'weight', Number(Number(e.target.value)))} />
           </div>
         </div>
       )
@@ -117,7 +98,7 @@ export default function Stepper() {
     }
   ];
 
-  // 处理输入变化
+
   const handleInputChange = (section: keyof typeof formData, field: string, value: string | number) => {
     setFormData({
       ...formData,
@@ -125,12 +106,12 @@ export default function Stepper() {
     });
   };
 
-  // 导航函数
+
   const nextStep = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
-      handleSubmit(); // 最后一步提交
+      handleSubmit();
     }
   };
 
@@ -141,9 +122,8 @@ export default function Stepper() {
   };
 
   const handleSubmit = () => {
-    console.log('表单数据提交:', formData);
-    alert('注册完成！数据已准备提交。');
-    // 这里可以添加实际的API调用
+    console.log(':', formData);
+    alert('');
   };
 
   return (

@@ -1,18 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { Zap, Trophy, Play, } from 'lucide-react';
-import { Running } from '../_components/icons';
-import ThePanelHeader from '../_components/TheHeader';
-import AssetOverviewCard from '../_components/AssetOverviewCard';
-import ActivityControlPanel from '../_components/ActivityControlPanel';
-import HealthData from '../_components/HealthData';
-import FastInvestment from '../_components/FastInvestment';
-import { useInvestmentStore } from '../_store/investment.store';
+import AssetOverviewCard from '../../_components/AssetOverviewCard';
+import ActivityControlPanel from '../../_components/ActivityControlPanel';
+import HealthData from '../../_components/HealthData';
+import FastInvestment from '../../_components/FastInvestment';
+import { useInvestmentStore } from '../../_store/investment.store';
 
 const FitnessInvestmentPlatform = () => {
-  const [showBalance, setShowBalance] = useState(true);
-  const [sessionType, setSessionType] = useState('running');
+  // const [showBalance, setShowBalance] = useState(true);
+  // const [sessionType, setSessionType] = useState('running');
   const { 
     totalInvested, 
     totalEarned, 

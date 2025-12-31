@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { PixIcon, RunningIcon } from '../_components/icons';
+import { PixIcon, RunningIcon } from '../../_components/icons';
 import { ArrowLeftIcon, CalculatorIcon, CheckCircleIcon, ClockIcon, CopyIcon, CreditCardIcon, MapIcon, QrCode, ShieldIcon, TargetIcon, ZapIcon } from 'lucide-react';
 
 // Componentes de ícones SVG

@@ -1,8 +1,8 @@
 'use client';
 
 import { Pause, Play } from "lucide-react";
-import { useGPS } from "../_utils/useGPS";
-import { useInvestmentStore } from "../_store/investment.store";
+import { useGPS } from "../../_hooks/useGPS";
+import { useInvestmentStore } from "../../_store/investment.store";
 import { useCallback } from "react";
 
 
